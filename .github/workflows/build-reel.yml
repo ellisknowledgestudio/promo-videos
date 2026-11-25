@@ -1,0 +1,90 @@
+name: Build promo reel
+
+# Runs when a job file is added or changed in jobs/. Each job builds one 9:16 reel,
+# publishes the MP4 as a GitHub release (public link for Make) and writes
+# results/<slug>.json so Claude can pick it up.
+on:
+  push:
+    branches: [main]
+    paths: ["jobs/*.json"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-reel
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Get the classroom site
+        run: git clone --depth 1 https://github.com/ellisknowledgestudio/classroom-site site
+
+      - name: Install tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core > /dev/null
+          pip install -q playwright
+          python -m playwright install --with-deps chromium > /dev/null
+
+      - name: Find the jobs in this push
+        id: jobs
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            FILES=$(ls jobs/*.json 2>/dev/null | tr '\n' ' ')
+          else
+            FILES=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- 'jobs/*.json' | tr '\n' ' ')
+          fi
+          echo "files=$FILES" >> "$GITHUB_OUTPUT"
+          echo "Jobs: $FILES"
+
+      - name: Build the reels
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p results out
+          for f in ${{ steps.jobs.outputs.files }}; do
+            slug=$(python -c "import json,sys;print(json.load(open('$f'))['slug'])")
+            bg_url=$(python -c "import json;print(json.load(open('$f')).get('bg_url',''))")
+            if [ -n "$bg_url" ]; then curl -sSfL "$bg_url" -o assets/bg.png; fi
+            tag="reel-$slug-$(date -u +%Y%m%d-%H%M%S)"
+            if python make_reel.py "$f" --site site --bg assets/bg.png --out "out/$slug.mp4" > "out/$slug.log" 2>&1; then
+              gh release create "$tag" "out/$slug.mp4" --title "$slug reel" --notes "Built from $f" > /dev/null
+              url="https://github.com/${{ github.repository }}/releases/download/$tag/$slug.mp4"
+              python - "$slug" "$tag" "$url" "$f" <<'PY'
+          import json, sys, datetime
+          slug, tag, url, f = sys.argv[1:5]
+          t = json.load(open(f"out/{slug}.mp4.timings.json"))
+          json.dump({"slug": slug, "status": "ok", "tag": tag, "video_url": url, "job": f,
+                     "built": datetime.datetime.utcnow().isoformat() + "Z", **t},
+                    open(f"results/{slug}.json", "w"), indent=1)
+          PY
+            else
+              python - "$slug" "$f" <<'PY'
+          import json, sys, datetime
+          slug, f = sys.argv[1:3]
+          log = open(f"out/{slug}.log").read()[-4000:]
+          json.dump({"slug": slug, "status": "failed", "job": f, "log": log,
+                     "built": datetime.datetime.utcnow().isoformat() + "Z"},
+                    open(f"results/{slug}.json", "w"), indent=1)
+          PY
+            fi
+          done
+
+      - name: Save results
+        if: always()
+        run: |
+          git config user.name "reel-builder"
+          git config user.email "actions@users.noreply.github.com"
+          git add results assets/bg.png 2>/dev/null || true
+          git commit -m "Reel results" || exit 0
+          git pull --rebase -q origin main && git push -q origin HEAD:main

@@ -1,0 +1,167 @@
+{
+ "slug": "what-is-electricity",
+ "page": "/electricity/what-is-electricity/",
+ "url_text": "https://classroom.ellisknowledgestudio.com/electricity/what-is-electricity/",
+ "voice_id": "VsQmyFHffusQDewmHB5v",
+ "captions": [
+  "What is electricity?",
+  "Let's find out with",
+  "a free interactive tool",
+  "for ages 7 to 11.",
+  "Tap the switch to close",
+  "the gap and the bulb lights up.",
+  "Electricity only flows around a complete",
+  "loop called a circuit.",
+  "Where does it come from?",
+  "Explore wind,",
+  "solar,",
+  "gas and more.",
+  "Then follow electricity all",
+  "the way from the power station to",
+  "your plug.",
+  "Mains or battery?",
+  "Sort the appliances and",
+  "get instant feedback.",
+  "Learn how to stay safe.",
+  "Is it safe or",
+  "is it danger?",
+  "Then test yourself with",
+  "a 10-question quiz.",
+  "It's completely free with",
+  "a printable practice pack to match.",
+  "Visit Ellis Knowledge Studio",
+  "and start exploring."
+ ],
+ "steps": [
+  {
+   "cap": 4,
+   "plus": -0.6,
+   "scroll": "#board"
+  },
+  {
+   "cap": 4,
+   "plus": 0.6,
+   "click": "[data-id='switch1']",
+   "js": "var j = board.toJSON(); j.components.forEach(function (c) { if (c.type === 'switch') { c.props.closed = true; } }); board.load(j);"
+  },
+  {
+   "cap": 6,
+   "plus": 0.0,
+   "point": "[data-id='bulb1']"
+  },
+  {
+   "cap": 8,
+   "plus": 0.0,
+   "click": "#t-where"
+  },
+  {
+   "cap": 9,
+   "plus": 0.0,
+   "scroll": "#sources"
+  },
+  {
+   "cap": 12,
+   "plus": 0.0,
+   "scroll": "#journey"
+  },
+  {
+   "cap": 12,
+   "plus": 0.9,
+   "click": "#jNext"
+  },
+  {
+   "cap": 13,
+   "plus": 0.6,
+   "click": "#jNext"
+  },
+  {
+   "cap": 14,
+   "plus": 0.0,
+   "click": "#jNext"
+  },
+  {
+   "cap": 15,
+   "plus": -0.4,
+   "scrollTop": true
+  },
+  {
+   "cap": 15,
+   "plus": 0.0,
+   "click": "#t-sort"
+  },
+  {
+   "cap": 16,
+   "plus": 0.3,
+   "click": "#sortList .wi-item:nth-child(1) button:nth-of-type(1)"
+  },
+  {
+   "cap": 17,
+   "plus": 0.0,
+   "click": "#sortList .wi-item:nth-child(2) button:nth-of-type(2)"
+  },
+  {
+   "cap": 18,
+   "plus": -0.4,
+   "scrollTop": true
+  },
+  {
+   "cap": 18,
+   "plus": 0.0,
+   "click": "#t-safe"
+  },
+  {
+   "cap": 19,
+   "plus": 0.0,
+   "click": "#safeList .wi-item:nth-child(1) button:nth-of-type(2)"
+  },
+  {
+   "cap": 20,
+   "plus": 0.0,
+   "click": "#safeList .wi-item:nth-child(2) button:nth-of-type(1)"
+  },
+  {
+   "cap": 21,
+   "plus": -0.4,
+   "scrollTop": true
+  },
+  {
+   "cap": 21,
+   "plus": 0.0,
+   "click": "#t-quiz"
+  },
+  {
+   "cap": 22,
+   "plus": 0.0,
+   "click": "#qOpts button:nth-child(1)"
+  },
+  {
+   "cap": 23,
+   "plus": 0.0,
+   "click": "#t-what"
+  },
+  {
+   "cap": 24,
+   "plus": 0.0,
+   "scrollTop": true
+  },
+  {
+   "cap": 25,
+   "plus": 0.0,
+   "point": "h1"
+  },
+  {
+   "cap": 26,
+   "plus": 0.8,
+   "hide": true
+  }
+ ],
+ "pauses": [
+  3,
+  7,
+  14,
+  17,
+  20,
+  22
+ ],
+ "bg_url": "https://export-download.canva.com/_qmrc/DAHb7K_qmrc/-1/0/0001-2378423885543060704.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH4R7NKVBA%2F20261124%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261124T221743Z&X-Amz-Expires=59246&X-Amz-Signature=a17ea242eb9e50981b5d5037b3a3340d491dcf96b36125e042dc1c34b87e4868&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Wed%2C%2025%20Nov%202026%2014%3A45%3A09%20GMT"
+}
