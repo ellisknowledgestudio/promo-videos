@@ -34,27 +34,115 @@
   "Visit Ellis Knowledge Studio",
   "and start training."
  ],
- "pauses": [2, 5, 10, 14, 15, 19, 23],
+ "pauses": [
+  2,
+  5,
+  10,
+  14,
+  15,
+  19,
+  23
+ ],
  "steps": [
-  {"cap": 3, "plus": 0.0, "scroll": "#overview"},
-  {"cap": 6, "plus": 0.0, "scroll": "#trainer"},
-  {"cap": 8, "plus": 0.0, "click": "#linePicker li:nth-child(1) button"},
-  {"cap": 9, "plus": 0.0, "point": "#linePicker li:nth-child(2) button"},
-  {"cap": 10, "plus": 0.0, "point": "#linePicker li:nth-child(3) button"},
-  {"cap": 11, "plus": 0.0, "point": "#trainBoard"},
-  {"cap": 12, "plus": 0.0, "click": "#trainBoard [data-sq='e2']"},
-  {"cap": 12, "plus": 0.6, "click": "#trainBoard [data-sq='e4']"},
-  {"cap": 13, "plus": 0.0, "click": "#trainBoard [data-sq='g1']"},
-  {"cap": 13, "plus": 0.6, "click": "#trainBoard [data-sq='f3']"},
-  {"cap": 15, "plus": 0.5, "click": "#hintBtn"},
-  {"cap": 16, "plus": -0.3, "scroll": "#traps"},
-  {"cap": 18, "plus": 0.0, "click": "#trapList .trap button"},
-  {"cap": 19, "plus": 0.3, "click": "#trapFwd"},
-  {"cap": 19, "plus": 1.2, "click": "#trapEnd"},
-  {"cap": 20, "plus": 0.0, "scroll": "#quiz"},
-  {"cap": 22, "plus": 0.0, "click": "#quizBoard [data-sq='b5']"},
-  {"cap": 22, "plus": 0.6, "click": "#quizBoard [data-sq='a4']"},
-  {"cap": 24, "plus": 0.0, "scrollTop": true},
-  {"cap": 25, "plus": 0.0, "hide": true}
+  {
+   "cap": 3,
+   "plus": 0.0,
+   "scroll": "#overview"
+  },
+  {
+   "cap": 6,
+   "plus": 0.0,
+   "scroll": "#trainer"
+  },
+  {
+   "cap": 8,
+   "plus": 0.0,
+   "click": "#linePicker li:nth-child(1) button"
+  },
+  {
+   "cap": 9,
+   "plus": 0.0,
+   "point": "#linePicker li:nth-child(2) button"
+  },
+  {
+   "cap": 10,
+   "plus": 0.0,
+   "point": "#linePicker li:nth-child(3) button"
+  },
+  {
+   "cap": 11,
+   "plus": 0.0,
+   "point": "#trainBoard"
+  },
+  {
+   "cap": 12,
+   "plus": -0.4,
+   "click": "#trainBoard [data-sq='e2']"
+  },
+  {
+   "cap": 12,
+   "plus": 0.2,
+   "click": "#trainBoard [data-sq='e4']"
+  },
+  {
+   "cap": 13,
+   "plus": 0.3,
+   "click": "#trainBoard [data-sq='g1']"
+  },
+  {
+   "cap": 13,
+   "plus": 0.8,
+   "click": "#trainBoard [data-sq='f3']"
+  },
+  {
+   "cap": 15,
+   "plus": 0.5,
+   "click": "#hintBtn"
+  },
+  {
+   "cap": 16,
+   "plus": -0.3,
+   "scroll": "#traps"
+  },
+  {
+   "cap": 18,
+   "plus": 0.0,
+   "click": "#trapList .trap button"
+  },
+  {
+   "cap": 19,
+   "plus": 0.3,
+   "click": "#trapFwd"
+  },
+  {
+   "cap": 19,
+   "plus": 1.2,
+   "click": "#trapEnd"
+  },
+  {
+   "cap": 20,
+   "plus": 0.0,
+   "scroll": "#quiz"
+  },
+  {
+   "cap": 22,
+   "plus": 0.0,
+   "click": "#quizBoard [data-sq='b5']"
+  },
+  {
+   "cap": 22,
+   "plus": 0.6,
+   "click": "#quizBoard [data-sq='a4']"
+  },
+  {
+   "cap": 24,
+   "plus": 0.0,
+   "scrollTop": true
+  },
+  {
+   "cap": 25,
+   "plus": 0.0,
+   "hide": true
+  }
  ]
 }
