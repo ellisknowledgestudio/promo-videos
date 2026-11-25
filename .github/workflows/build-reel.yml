@@ -25,8 +25,10 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Get the classroom site
-        run: git clone --depth 1 https://github.com/ellisknowledgestudio/classroom-site site
+      - name: Get the classroom and chess sites
+        run: |
+          git clone --depth 1 https://github.com/ellisknowledgestudio/classroom-site site
+          git clone --depth 1 https://github.com/ellisknowledgestudio/chess-site chess-site
 
       - name: Install tools
         run: |
@@ -56,8 +58,10 @@ jobs:
             slug=$(python -c "import json,sys;print(json.load(open('$f'))['slug'])")
             bg_url=$(python -c "import json;print(json.load(open('$f')).get('bg_url',''))")
             if [ -n "$bg_url" ]; then curl -sSfL "$bg_url" -o assets/bg.png; fi
+            site_name=$(python -c "import json;print(json.load(open('$f')).get('site','classroom'))")
+            if [ "$site_name" = "chess" ]; then site_dir=chess-site; else site_dir=site; fi
             tag="reel-$slug-$(date -u +%Y%m%d-%H%M%S)"
-            if python make_reel.py "$f" --site site --bg assets/bg.png --out "out/$slug.mp4" > "out/$slug.log" 2>&1; then
+            if python make_reel.py "$f" --site "$site_dir" --bg assets/bg.png --out "out/$slug.mp4" > "out/$slug.log" 2>&1; then
               mkdir -p videos && cp "out/$slug.mp4" "videos/$tag.mp4"
               # direct (no-redirect) public link: Instagram and Facebook fetch the video from it
               url="https://raw.githubusercontent.com/${{ github.repository }}/main/videos/$tag.mp4"

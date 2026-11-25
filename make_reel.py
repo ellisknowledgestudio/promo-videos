@@ -127,7 +127,10 @@ def record(job, site, times, lead, total, out_webm):
             # Switch demo mode on now (the page's own demo script stayed inactive), load a fresh
             # copy of demo.js so it reads ?demo&wait=0, then define this video's timed steps.
             await pg.evaluate("() => history.replaceState(null, '', location.pathname + '?demo&wait=0')")
-            await pg.add_script_tag(path=os.path.join(site, "electricity/assets/demo.js"))
+            demo = os.path.join(site, "electricity/assets/demo.js")
+            if not os.path.exists(demo):   # chess site and others: use the bundled copy
+                demo = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "demo.js")
+            await pg.add_script_tag(path=demo)
             await pg.evaluate("(src) => { (new Function(src))(); }", define)
             started = time.monotonic() - t0 + 0.8          # wait=0 starts 0.8 s after define
             await pg.wait_for_timeout(int((total + 1.5) * 1000))
