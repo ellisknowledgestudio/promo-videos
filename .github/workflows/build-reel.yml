@@ -1,7 +1,7 @@
 name: Build promo reel
 
 # Runs when a job file is added or changed in jobs/. Each job builds one 9:16 reel,
-# publishes the MP4 as a GitHub release (public link for Make) and writes
+# saves the MP4 in videos/ (public raw link for Make) and writes
 # results/<slug>.json so Claude can pick it up.
 on:
   push:
@@ -58,8 +58,9 @@ jobs:
             if [ -n "$bg_url" ]; then curl -sSfL "$bg_url" -o assets/bg.png; fi
             tag="reel-$slug-$(date -u +%Y%m%d-%H%M%S)"
             if python make_reel.py "$f" --site site --bg assets/bg.png --out "out/$slug.mp4" > "out/$slug.log" 2>&1; then
-              gh release create "$tag" "out/$slug.mp4" --title "$slug reel" --notes "Built from $f" > /dev/null
-              url="https://github.com/${{ github.repository }}/releases/download/$tag/$slug.mp4"
+              mkdir -p videos && cp "out/$slug.mp4" "videos/$tag.mp4"
+              # direct (no-redirect) public link: Instagram and Facebook fetch the video from it
+              url="https://raw.githubusercontent.com/${{ github.repository }}/main/videos/$tag.mp4"
               python - "$slug" "$tag" "$url" "$f" <<'PY'
           import json, sys, datetime
           slug, tag, url, f = sys.argv[1:5]
@@ -85,6 +86,6 @@ jobs:
         run: |
           git config user.name "reel-builder"
           git config user.email "actions@users.noreply.github.com"
-          git add results assets/bg.png 2>/dev/null || true
+          git add results videos assets/bg.png 2>/dev/null || true
           git commit -m "Reel results" || exit 0
           git pull --rebase -q origin main && git push -q origin HEAD:main

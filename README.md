@@ -9,6 +9,6 @@ all placed in the Ellis Knowledge reel template with captions.
 - `assets/bg.png` – the empty-frame background exported from Canva
   ("AUTOMATION – Ellis reel background").
 - `results/<slug>.json` – written by the build: the public video link, or the error log.
-- Finished videos are published as GitHub releases.
+- `videos/` – the finished MP4s (public raw links used by Make to post them).
 
 Secret needed: `ELEVENLABS_API_KEY` (Text to Speech access only).
