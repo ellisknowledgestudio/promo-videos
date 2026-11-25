@@ -1,0 +1,11 @@
+# Classroom tools that already have a promo reel (one SUBJECT/FOLDER per line).
+# The daily reel agent skips these and adds each new one it builds.
+electricity/what-is-electricity
+science/senses
+science/periodic-table
+science/cells
+science/circulatory-system
+science/respiratory-system
+science/reproductive-system
+science/excretory-system
+science/nervous-system
