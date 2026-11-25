@@ -1,7 +1,145 @@
 {
  "slug": "what-is-electricity",
- "status": "failed",
+ "status": "ok",
+ "tag": "reel-what-is-electricity-20261125-135946",
+ "video_url": "https://github.com/ellisknowledgestudio/promo-videos/releases/download/reel-what-is-electricity-20261125-135946/what-is-electricity.mp4",
  "job": "jobs/what-is-electricity.json",
- "log": "ElevenLabs said 400: {\"detail\":{\"type\":\"authentication_error\",\"code\":\"invalid_api_key\",\"message\":\"API key ID used as API key - only valid API keys can be used. API keys start with 'sk_' and are shown when the key is created or rotated.\",\"status\":\"api_key_id_used_as_api_key\",\"request_id\":\"5a553004bc5e069e7daca36fb687f5d8\",\"param\":\"api_key\",\"docs_url\":\"https://elevenlabs.io/docs/api-reference/authentication\"}}\n",
- "built": "2026-11-25T13:07:30.349640Z"
+ "built": "2026-11-25T14:01:09.464806Z",
+ "captions": [
+  [
+   "What is electricity?",
+   0.0,
+   1.498
+  ],
+  [
+   "Let's find out with",
+   2.31,
+   3.216
+  ],
+  [
+   "a free interactive tool",
+   3.262,
+   4.505
+  ],
+  [
+   "for ages 7 to 11.",
+   4.574,
+   6.107
+  ],
+  [
+   "Tap the switch to close",
+   7.303,
+   8.417
+  ],
+  [
+   "the gap and the bulb lights up.",
+   8.44,
+   10.286
+  ],
+  [
+   "Electricity only flows around a complete",
+   10.983,
+   13.142
+  ],
+  [
+   "loop called a circuit.",
+   13.177,
+   14.489
+  ],
+  [
+   "Where does it come from?",
+   15.673,
+   16.788
+  ],
+  [
+   "Explore wind,",
+   17.229,
+   18.297
+  ],
+  [
+   "solar,",
+   18.471,
+   19.052
+  ],
+  [
+   "gas and more.",
+   19.261,
+   20.607
+  ],
+  [
+   "Then follow electricity all",
+   21.165,
+   22.604
+  ],
+  [
+   "the way from the power station to",
+   22.651,
+   24.021
+  ],
+  [
+   "your plug.",
+   24.079,
+   24.613
+  ],
+  [
+   "Mains or battery?",
+   25.635,
+   26.749
+  ],
+  [
+   "Sort the appliances and",
+   27.399,
+   28.665
+  ],
+  [
+   "get instant feedback.",
+   28.723,
+   29.953
+  ],
+  [
+   "Learn how to stay safe.",
+   30.94,
+   32.322
+  ],
+  [
+   "Is it safe or",
+   33.204,
+   34.354
+  ],
+  [
+   "is it danger?",
+   34.412,
+   35.166
+  ],
+  [
+   "Then test yourself with",
+   36.176,
+   37.267
+  ],
+  [
+   "a 10-question quiz.",
+   37.302,
+   38.486
+  ],
+  [
+   "It's completely free with",
+   39.554,
+   40.832
+  ],
+  [
+   "a printable practice pack to match.",
+   40.866,
+   42.527
+  ],
+  [
+   "Visit Ellis Knowledge Studio",
+   42.91,
+   44.396
+  ],
+  [
+   "and start exploring.",
+   44.605,
+   46.068
+  ]
+ ]
 }
