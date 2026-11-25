@@ -61,7 +61,8 @@ jobs:
             site_name=$(python -c "import json;print(json.load(open('$f')).get('site','classroom'))")
             if [ "$site_name" = "chess" ]; then site_dir=chess-site; else site_dir=site; fi
             tag="reel-$slug-$(date -u +%Y%m%d-%H%M%S)"
-            if python make_reel.py "$f" --site "$site_dir" --bg assets/bg.png --out "out/$slug.mp4" > "out/$slug.log" 2>&1; then
+            bg_file=$(python -c "import json;print(json.load(open('$f')).get('bg','assets/bg.png'))")
+            if python make_reel.py "$f" --site "$site_dir" --bg "$bg_file" --out "out/$slug.mp4" > "out/$slug.log" 2>&1; then
               mkdir -p videos && cp "out/$slug.mp4" "videos/$tag.mp4"
               # direct (no-redirect) public link: Instagram and Facebook fetch the video from it
               url="https://raw.githubusercontent.com/${{ github.repository }}/main/videos/$tag.mp4"
