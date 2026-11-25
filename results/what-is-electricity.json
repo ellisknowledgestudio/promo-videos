@@ -1,0 +1,7 @@
+{
+ "slug": "what-is-electricity",
+ "status": "failed",
+ "job": "jobs/what-is-electricity.json",
+ "log": "Traceback (most recent call last):\n  File \"/home/runner/work/promo-videos/promo-videos/make_reel.py\", line 223, in <module>\n    main()\n    ~~~~^^\n  File \"/home/runner/work/promo-videos/promo-videos/make_reel.py\", line 206, in main\n    times = None if a.silent else tts(job, mp3)\n                                  ~~~^^^^^^^^^^\n  File \"/home/runner/work/promo-videos/promo-videos/make_reel.py\", line 57, in tts\n    with urllib.request.urlopen(req, timeout=300) as r:\n         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/urllib/request.py\", line 187, in urlopen\n    return opener.open(url, data, timeout)\n           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/urllib/request.py\", line 493, in open\n    response = meth(req, response)\n  File \"/usr/lib/python3.14/urllib/request.py\", line 602, in http_response\n    response = self.parent.error(\n        'http', request, response, code, msg, hdrs)\n  File \"/usr/lib/python3.14/urllib/request.py\", line 531, in error\n    return self._call_chain(*args)\n           ~~~~~~~~~~~~~~~~^^^^^^^\n  File \"/usr/lib/python3.14/urllib/request.py\", line 464, in _call_chain\n    result = func(*args)\n  File \"/usr/lib/python3.14/urllib/request.py\", line 611, in http_error_default\n    raise HTTPError(req.full_url, code, msg, hdrs, fp)\nurllib.error.HTTPError: HTTP Error 400: Bad Request\n",
+ "built": "2026-11-25T12:58:40.672341Z"
+}
