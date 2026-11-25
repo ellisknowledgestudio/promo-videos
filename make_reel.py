@@ -20,7 +20,7 @@ Any EKDemo action works: click, scroll, scrollTop, point, hide, show.
 Needs: ffmpeg, Playwright (Chromium) and, for the voiceover, ELEVENLABS_API_KEY.
 Without the key (or with --silent) it makes a silent test version with estimated timings.
 """
-import argparse, base64, json, os, re, shutil, subprocess, sys, tempfile, threading, time, http.server, functools, urllib.request
+import urllib.error, argparse, base64, json, os, re, shutil, subprocess, sys, tempfile, threading, time, http.server, functools, urllib.request
 
 W, H = 1080, 1920
 FRAME = (66, 565, 948, 814)          # x, y, w, h of the screen window in the Canva template
@@ -54,8 +54,11 @@ def tts(job, out_mp3):
     req = urllib.request.Request(
         f"https://api.elevenlabs.io/v1/text-to-speech/{job['voice_id']}/with-timestamps?output_format=mp3_44100_128",
         data=body, headers={"xi-api-key": key, "Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=300) as r:
-        res = json.load(r)
+    try:
+        with urllib.request.urlopen(req, timeout=300) as r:
+            res = json.load(r)
+    except urllib.error.HTTPError as e:
+        raise SystemExit(f"ElevenLabs said {e.code}: {e.read().decode(errors='replace')[:1500]}")
     open(out_mp3, "wb").write(base64.b64decode(res["audio_base64"]))
     al = res.get("alignment") or res["normalized_alignment"]
     chars = "".join(al["characters"])
