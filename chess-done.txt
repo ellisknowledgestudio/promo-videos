@@ -2,3 +2,4 @@
 # The daily chess reel agent skips these and adds each new one it builds.
 openings/italian-game/
 checkmate-academy.html
+openings/ruy-lopez/
