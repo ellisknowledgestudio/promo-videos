@@ -174,7 +174,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     x, y = URL_BOX[0], URL_BOX[1] + URL_BOX[3] // 2
     lines.append(f"Dialogue: 0,{ass_time(0)},{ass_time(total)},Url,,0,0,0,,{{\\an4\\pos({x},{y})}}{url}")
     for i, cap in enumerate(job["captions"]):
-        a = times[i][0] + offset
+        a = 0.0 if i == 0 else times[i][0] + offset   # first caption from frame 0, so the cover has the hook
         b = (times[i + 1][0] + offset) if i + 1 < len(times) else times[i][1] + offset + 1.2
         txt = cap.replace("{", "(").replace("}", ")")
         lines.append(f"Dialogue: 1,{ass_time(a)},{ass_time(b)},Cap,,0,0,0,,{{\\an5\\pos({W//2},{CAP_Y})}}{txt}")
@@ -189,7 +189,11 @@ def compose(bg, webm, mp3, ass, rec_start, voice_offset, total, out):
     inputs = ["-loop", "1", "-i", bg, "-ss", f"{trim:.2f}", "-i", webm]
     if mp3:
         inputs += ["-itsoffset", f"{voice_offset:.2f}", "-i", mp3]
-    fc = (f"[1:v]scale={w}:{h}:flags=lanczos,setsar=1,fps=30[rec];"
+    # setpts resets the trimmed recording's clock to 0 and tpad holds its first frame for a moment,
+    # so the page is already in the window on frame 0. Instagram/Facebook use frame 0 as the
+    # cover, and without this the first frames showed the template's empty window.
+    fc = (f"[1:v]setpts=PTS-STARTPTS,tpad=start_mode=clone:start_duration=0.5,trim=start=0.5,"
+          f"setpts=PTS-STARTPTS,scale={w}:{h}:flags=lanczos,setsar=1,fps=30[rec];"
           f"[0:v]scale={W}:{H},setsar=1[bg];"
           f"[bg][rec]overlay={x}:{y}:shortest=0[v0];"
           f"[v0]subtitles={ass}:fontsdir=/usr/share/fonts[v]")
@@ -199,6 +203,22 @@ def compose(bg, webm, mp3, ass, rec_start, voice_offset, total, out):
     cmd += ["-t", f"{total:.2f}", "-r", "30", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
             "-pix_fmt", "yuv420p", "-movflags", "+faststart", out]
     sh(cmd)
+    check_cover(out)
+
+
+def check_cover(out):
+    """Fail the build if frame 0 (the default social cover) has an empty screen window."""
+    x, y, w, h = FRAME
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", out, "-frames:v", "1",
+                          "-vf", f"crop={w}:{h}:{x}:{y},scale=96:-1,format=gray",
+                          "-f", "rawvideo", "-"], capture_output=True, check=True).stdout
+    if not raw:
+        raise SystemExit("Cover check: could not read frame 0")
+    mean = sum(raw) / len(raw)
+    spread = (sum((v - mean) ** 2 for v in raw) / len(raw)) ** 0.5
+    if spread < 12:
+        raise SystemExit(f"Cover check failed: the screen window is blank on frame 0 (spread {spread:.1f})")
+    print(f"Cover check ok (frame 0 window detail {spread:.1f})")
 
 
 def main():
