@@ -4,3 +4,4 @@ openings/italian-game/
 checkmate-academy.html
 openings/ruy-lopez/
 openings/caro-kann/
+openings/london-system/
