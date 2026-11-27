@@ -1,0 +1,133 @@
+{
+ "slug": "chess-london-system",
+ "site": "chess",
+ "bg": "assets/bg-chess.png",
+ "page": "/openings/london-system/",
+ "url_text": "chess.ellisknowledgestudio.com/openings/london-system/",
+ "voice_id": "VsQmyFHffusQDewmHB5v",
+ "captions": [
+  "Want a reliable system with White?",
+  "Try this free",
+  "London System opening guide.",
+  "Learn the key ideas,",
+  "typical plans",
+  "and what to watch out for.",
+  "Then drill the lines",
+  "in the line trainer:",
+  "the main line against d5 and e6,",
+  "the King's Indian set-up,",
+  "and the early queen to b6.",
+  "You play White.",
+  "Pawn to d4,",
+  "bishop to f4,",
+  "and Black replies instantly.",
+  "Stuck? Get a hint.",
+  "The same sturdy set-up",
+  "works against almost anything,",
+  "so you learn plans,",
+  "not endless theory.",
+  "Then test yourself",
+  "with a quick quiz.",
+  "Bishop to f4.",
+  "Correct!",
+  "It's completely free.",
+  "Visit Ellis Knowledge Studio",
+  "and start training."
+ ],
+ "pauses": [
+  2,
+  5,
+  10,
+  14,
+  15,
+  19,
+  23
+ ],
+ "steps": [
+  {
+   "cap": 3,
+   "plus": 0.0,
+   "scroll": "#overview"
+  },
+  {
+   "cap": 6,
+   "plus": 0.0,
+   "scroll": "#trainer"
+  },
+  {
+   "cap": 8,
+   "plus": 0.0,
+   "click": "#linePicker li:nth-child(1) button"
+  },
+  {
+   "cap": 9,
+   "plus": 0.0,
+   "point": "#linePicker li:nth-child(2) button"
+  },
+  {
+   "cap": 10,
+   "plus": 0.0,
+   "point": "#linePicker li:nth-child(3) button"
+  },
+  {
+   "cap": 11,
+   "plus": 0.0,
+   "point": "#trainBoard"
+  },
+  {
+   "cap": 12,
+   "plus": -0.4,
+   "click": "#trainBoard [data-sq='d2']"
+  },
+  {
+   "cap": 12,
+   "plus": 0.2,
+   "click": "#trainBoard [data-sq='d4']"
+  },
+  {
+   "cap": 13,
+   "plus": 0.3,
+   "click": "#trainBoard [data-sq='c1']"
+  },
+  {
+   "cap": 13,
+   "plus": 0.8,
+   "click": "#trainBoard [data-sq='f4']"
+  },
+  {
+   "cap": 15,
+   "plus": 0.5,
+   "click": "#hintBtn"
+  },
+  {
+   "cap": 16,
+   "plus": 0.3,
+   "point": "#lineBlurb"
+  },
+  {
+   "cap": 20,
+   "plus": 0.0,
+   "scroll": "#quiz"
+  },
+  {
+   "cap": 22,
+   "plus": 0.0,
+   "click": "#quizBoard [data-sq='c1']"
+  },
+  {
+   "cap": 22,
+   "plus": 0.6,
+   "click": "#quizBoard [data-sq='f4']"
+  },
+  {
+   "cap": 24,
+   "plus": 0.0,
+   "scrollTop": true
+  },
+  {
+   "cap": 25,
+   "plus": 0.0,
+   "hide": true
+  }
+ ]
+}
