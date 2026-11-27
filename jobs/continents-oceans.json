@@ -1,0 +1,146 @@
+{
+ "slug": "continents-oceans",
+ "page": "/geography/continents-oceans/",
+ "url_text": "https://classroom.ellisknowledgestudio.com/geography/continents-oceans/",
+ "voice_id": "VsQmyFHffusQDewmHB5v",
+ "captions": [
+  "Can you name all 7 continents",
+  "and 5 oceans?",
+  "Let's find out with",
+  "a free interactive tool",
+  "for ages 7 to 11.",
+  "Tap the world map",
+  "to explore each continent.",
+  "See where it ranks for size",
+  "out of all seven,",
+  "with easy facts to read.",
+  "Try South America,",
+  "Europe,",
+  "or Oceania.",
+  "Then explore the oceans,",
+  "from the giant Pacific",
+  "to the icy Arctic.",
+  "A handy memory tip helps",
+  "you remember them in size order.",
+  "Then test yourself with",
+  "a 10-question World Quiz.",
+  "Spot the continent in gold,",
+  "name the circled ocean",
+  "and match countries to continents.",
+  "It's completely free,",
+  "with printable geography packs to go with it.",
+  "Visit Ellis Knowledge Studio",
+  "and start exploring."
+ ],
+ "pauses": [
+  1,
+  4,
+  9,
+  12,
+  15,
+  17,
+  22,
+  24
+ ],
+ "steps": [
+  {
+   "cap": 5,
+   "plus": -0.4,
+   "scroll": "#mapE"
+  },
+  {
+   "cap": 6,
+   "plus": 0.2,
+   "click": "#eafrica",
+   "js": "document.getElementById('eafrica').dispatchEvent(new MouseEvent('click',{bubbles:true}));"
+  },
+  {
+   "cap": 7,
+   "plus": 0.3,
+   "point": "#iTag"
+  },
+  {
+   "cap": 9,
+   "plus": 0.0,
+   "point": "#iFacts"
+  },
+  {
+   "cap": 10,
+   "plus": 0.0,
+   "click": "#esamerica",
+   "js": "document.getElementById('esamerica').dispatchEvent(new MouseEvent('click',{bubbles:true}));"
+  },
+  {
+   "cap": 11,
+   "plus": 0.0,
+   "click": "#eeurope",
+   "js": "document.getElementById('eeurope').dispatchEvent(new MouseEvent('click',{bubbles:true}));"
+  },
+  {
+   "cap": 12,
+   "plus": 0.0,
+   "click": "#eoceania",
+   "js": "document.getElementById('eoceania').dispatchEvent(new MouseEvent('click',{bubbles:true}));"
+  },
+  {
+   "cap": 13,
+   "plus": 0.0,
+   "click": "#picks button:nth-child(8)"
+  },
+  {
+   "cap": 15,
+   "plus": 0.0,
+   "click": "#picks button:nth-child(12)"
+  },
+  {
+   "cap": 16,
+   "plus": -0.3,
+   "scroll": ".tip"
+  },
+  {
+   "cap": 16,
+   "plus": 0.5,
+   "point": ".tip"
+  },
+  {
+   "cap": 18,
+   "plus": -0.5,
+   "scrollTop": true
+  },
+  {
+   "cap": 18,
+   "plus": 0.3,
+   "click": "#t-quiz"
+  },
+  {
+   "cap": 20,
+   "plus": 0.0,
+   "click": "#qChoices button:nth-child(1)"
+  },
+  {
+   "cap": 21,
+   "plus": 0.0,
+   "click": "#qNext"
+  },
+  {
+   "cap": 22,
+   "plus": 0.0,
+   "click": "#qChoices button:nth-child(2)"
+  },
+  {
+   "cap": 25,
+   "plus": -0.5,
+   "scrollTop": true
+  },
+  {
+   "cap": 25,
+   "plus": 0.0,
+   "point": "h1"
+  },
+  {
+   "cap": 26,
+   "plus": 0.5,
+   "hide": true
+  }
+ ]
+}
